@@ -129,7 +129,7 @@ export function SuccessStep({ formData }: SuccessStepProps) {
       >
         <Button
           variant="outline"
-          className="border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+          className="bg-transparent border-white/20 text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
         >
           <Download className="h-4 w-4" />
           Download Report

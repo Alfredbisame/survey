@@ -392,7 +392,7 @@ export function SurveyForm() {
               name="businessLocation"
               value={formData.businessLocation}
               onChange={handleInputChange}
-              placeholder="e.g., Accra, Kumasi"
+              placeholder="e.g., Accra, Kumasi, Ho"
               className="bg-white/5 border-white/10 text-white placeholder:text-white/50"
             />
           </div>

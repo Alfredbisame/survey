@@ -155,12 +155,40 @@ export function MultiStepForm() {
     }
   }
 
-  const handleSubmit = () => {
-    if (validateStep(currentStep)) {
-      console.log("Form submitted:", formData)
-      setIsSubmitted(true)
-    }
+const handleSubmit = () => {
+  if (validateStep(currentStep)) {
+    // Format form data into a WhatsApp-readable message with only values
+    const messageLines = Object.entries(formData)
+      .map(([key, value]) => {
+        // Convert camelCase to readable format
+        const readableKey = key
+          .replace(/([A-Z])/g, ' $1')
+          .replace(/^./, str => str.toUpperCase())
+          .trim();
+        
+        if (Array.isArray(value)) {
+          return `${readableKey}: ${value.join(', ')}`;
+        }
+        return `${readableKey}: ${value}`;
+      })
+      .filter(line => line.split(': ')[1] && line.split(': ')[1].trim() !== '') // Remove empty values
+      .join('\n');
+
+    // Create a clean message format
+    const finalMessage = `New Survey Submission:\n\n${messageLines}`;
+    
+    // Replace with your WhatsApp number (including country code without '+')
+    const whatsappUrl = `https://wa.me/233554572904?text=${encodeURIComponent(finalMessage)}`;
+    
+    // Open WhatsApp with the message
+    window.open(whatsappUrl, '_blank');
+    
+    // Show success screen
+    setIsSubmitted(true);
   }
+};
+  
+  
 
   const CurrentStepComponent = isSubmitted ? SuccessStep : steps[currentStep].component
 
