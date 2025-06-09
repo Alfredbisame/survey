@@ -178,7 +178,7 @@ const handleSubmit = () => {
     const finalMessage = `New Survey Submission:\n\n${messageLines}`;
     
     // Replace with your WhatsApp number (including country code without '+')
-    const whatsappUrl = `https://wa.me/233554572904?text=${encodeURIComponent(finalMessage)}`;
+    const whatsappUrl = `https://wa.me/233249970393?text=${encodeURIComponent(finalMessage)}`;
     
     // Open WhatsApp with the message
     window.open(whatsappUrl, '_blank');
